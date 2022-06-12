@@ -9,5 +9,34 @@
         android:id="@+id/homeFragment"
         android:name="tahadeta.example.ftcover.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_listWallpaperFragment"
+            app:destination="@id/listWallpaperFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_favouriteFragment"
+            app:destination="@id/favouriteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="tahadeta.example.ftcover.ui.setting.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" />
+    <fragment
+        android:id="@+id/listWallpaperFragment"
+        android:name="tahadeta.example.ftcover.ui.wallpaper.ListWallpaperFragment"
+        android:label="fragment_list_wallpaper"
+        tools:layout="@layout/fragment_list_wallpaper" >
+        <argument
+            android:name="idCategorie"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/favouriteFragment"
+        android:name="tahadeta.example.ftcover.ui.favourite.FavouriteFragment"
+        android:label="fragment_favourite"
+        tools:layout="@layout/fragment_favourite" />
 </navigation>

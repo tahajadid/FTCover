@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_gray"
-    tools:context=".ui.home.HomeFragment">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.wallpaper.ListWallpaperFragment">
 
     <View
         android:id="@+id/view2"
@@ -18,18 +16,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listCategories"
+    <View
+        android:id="@+id/view7"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/homeBack"
+        android:background="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:listitem="@layout/categorie_item"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/categorieTitle" />
-
-
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:id="@+id/view6"
@@ -43,16 +38,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.90" />
 
-    <View
-        android:id="@+id/view7"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.80" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.10" />
 
     <View
         android:id="@+id/homeBack"
@@ -84,33 +89,12 @@
         app:layout_constraintStart_toEndOf="@+id/homeBack"
         app:layout_constraintTop_toTopOf="@+id/view2"/>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.90" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.80" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.10" />
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:padding="18dp"
-        android:src="@drawable/accueil_fill"
+        android:src="@drawable/accueil"
         app:layout_constraintBottom_toBottomOf="@+id/homeBack"
         app:layout_constraintEnd_toEndOf="@+id/homeBack"
         app:layout_constraintStart_toStartOf="@+id/homeBack"
@@ -121,7 +105,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:padding="14dp"
-        android:src="@drawable/star"
+        android:src="@drawable/star_fill"
         app:layout_constraintBottom_toBottomOf="@+id/favouriteBack"
         app:layout_constraintEnd_toEndOf="@+id/favouriteBack"
         app:layout_constraintStart_toStartOf="@+id/favouriteBack"
@@ -140,17 +124,11 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/categorieTitle"
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/mandarin_regular"
-        android:text="@string/categorie_title"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
-
+        android:text="Favourite"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="285dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

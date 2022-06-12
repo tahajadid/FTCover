@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import tahadeta.example.ftcover.R
 import tahadeta.example.ftcover.data.Categorie
@@ -44,6 +45,13 @@ private val list: List<Categorie>
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = list[position]
         holder.bindView(item, position, context)
+
+
+        holder.itemView.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToListWallpaperFragment(item.title.toString())
+            holder.itemView.findNavController().navigate(action)
+        }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

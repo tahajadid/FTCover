@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.*
@@ -18,6 +20,9 @@ class HomeFragment : Fragment() {
 
     private lateinit var categorieAdapter: CategorieAdapter
     private lateinit var recyclerView :RecyclerView
+    private lateinit var homeBack : View
+    private lateinit var favouriteBack : View
+    private lateinit var settingBack : View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +36,10 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         val root = inflater.inflate(R.layout.fragment_home, container, false)
 
-        recyclerView = root.findViewById<RecyclerView>(R.id.listCategories)
+        recyclerView = root.findViewById(R.id.listCategories)
+        homeBack = root.findViewById(R.id.homeBack)
+        favouriteBack = root.findViewById(R.id.favouriteBack)
+        settingBack = root.findViewById(R.id.settingBack)
 
         initComponent()
 
@@ -41,6 +49,14 @@ class HomeFragment : Fragment() {
     private fun initComponent() {
         listCategories = ArrayList()
         getCtegories()
+
+        settingBack.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSettingFragment())
+        }
+
+        favouriteBack.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToFavouriteFragment())
+        }
 
     }
 

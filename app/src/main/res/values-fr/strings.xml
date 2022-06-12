@@ -3,5 +3,6 @@
     <string name="app_name">FTCover</string>
     <string name="hello_blank_fragment">Bonjour</string>
     <string name="categorie_title">Catégorie</string>
+    <string name="add_favourrite">Ajouter aux favoris</string>
 
 </resources>

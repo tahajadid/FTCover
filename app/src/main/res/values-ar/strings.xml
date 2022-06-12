@@ -3,5 +3,6 @@
     <string name="app_name">FTCover</string>
     <string name="hello_blank_fragment">مرحبا</string>
     <string name="categorie_title">الفئة</string>
+    <string name="add_favourrite" translatable="false">إضافة إلى المفضلة لدي</string>
 
 </resources>

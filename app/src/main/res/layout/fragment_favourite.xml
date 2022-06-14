@@ -13,18 +13,47 @@
         android:background="@drawable/bottom_rounded_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
+        app:layout_constraintTop_toTopOf="@+id/guideline"
+        app:layout_constraintVertical_bias="0.0" />
 
     <View
         android:id="@+id/view7"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/black"
+        android:background="@drawable/top_rounded_bg"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/favouriteTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/mandarin_regular"
+        android:text="@string/my_favourite"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationLoading"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="80dp"
+        app:layout_constraintBottom_toTopOf="@+id/homeBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view7"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/favourite"
+        tools:ignore="MissingConstraints" />
 
     <View
         android:id="@+id/view6"
@@ -122,13 +151,5 @@
         app:layout_constraintStart_toStartOf="@+id/settingBack"
         app:layout_constraintTop_toTopOf="@+id/settingBack"
         app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Favourite"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="285dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,9 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
@@ -29,7 +31,12 @@ class ListWallpaperFragment : Fragment() {
     var listWallpapers: MutableList<Wallpaper> = ArrayList()
     private lateinit var wallpaperAdapter: WallpaperAdapter
     private lateinit var recyclerView : RecyclerView
+    lateinit var backImage: ImageView
+    lateinit var favouriteImage: View
+    lateinit var settingImage: View
 
+    // get the instance of the animated JSON
+    lateinit var animationView: LottieAnimationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,8 +51,25 @@ class ListWallpaperFragment : Fragment() {
         val root =  inflater.inflate(R.layout.fragment_list_wallpaper, container, false)
 
         recyclerView = root.findViewById(R.id.listWallpapers)
+        animationView = root.findViewById(R.id.animationLoading)
+        backImage = root.findViewById(R.id.backImage)
+        favouriteImage = root.findViewById(R.id.favouriteBack)
+        settingImage = root.findViewById(R.id.settingBack)
 
         getWallpapers()
+
+        backImage.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
+        favouriteImage.setOnClickListener {
+            findNavController().navigate(R.id.favouriteFragment)
+        }
+
+        settingImage.setOnClickListener {
+            findNavController().navigate(R.id.settingFragment)
+        }
+
 
         return root
     }
@@ -54,13 +78,18 @@ class ListWallpaperFragment : Fragment() {
 
         var database = FirebaseFirestore.getInstance()
         database.collection("wallpaper")
-            .whereEqualTo("idCategorie","fesCategorie").get()
+            .whereEqualTo("idCategorie",args.idCategorie).get()
             .addOnCompleteListener {
                 if(it.isSuccessful){
+
+                    listWallpapers = ArrayList()
                     for(result in it.result){
                         listWallpapers.add(result.toObject(Wallpaper::class.java))
                         Log.d("FirestoreData2", "Suss = " + result.toString())
                     }
+
+                    // hide animation
+                    animationView.visibility = View.GONE
 
                     wallpaperAdapter = WallpaperAdapter(this.context, listWallpapers)
 
@@ -68,6 +97,9 @@ class ListWallpaperFragment : Fragment() {
                         layoutManager = GridLayoutManager(this.context, 2)
                         adapter = wallpaperAdapter
                     }
+                    recyclerView.scheduleLayoutAnimation()
+
+                    wallpaperAdapter.notifyDataSetChanged()
 
                 }
             }.addOnFailureListener {

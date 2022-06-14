@@ -32,7 +32,7 @@ private val list: List<Categorie>
 
             when(item.title){
                 "Fatal Tigers" -> imageCategorieHome.setImageResource(R.drawable.fatal_cover)
-                "fes" -> imageCategorieHome.setImageResource(R.drawable.fes_cover)
+                "Fes" -> imageCategorieHome.setImageResource(R.drawable.fes_cover)
                 "Mas" -> imageCategorieHome.setImageResource(R.drawable.mas_cover)
                 "Football" -> imageCategorieHome.setImageResource(R.drawable.footbal_cover)
                 else -> imageCategorieHome.setImageResource(R.drawable.accueil)
@@ -48,7 +48,7 @@ private val list: List<Categorie>
 
 
         holder.itemView.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToListWallpaperFragment(item.title.toString())
+            val action = HomeFragmentDirections.actionHomeFragmentToListWallpaperFragment(item.idCategorie)
             holder.itemView.findNavController().navigate(action)
         }
 

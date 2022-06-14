@@ -33,10 +33,28 @@
         <argument
             android:name="idCategorie"
             app:argType="string" />
+        <action
+            android:id="@+id/action_listWallpaperFragment_to_detailWallpaperFragment"
+            app:destination="@id/detailWallpaperFragment" />
+        <action
+            android:id="@+id/action_listWallpaperFragment_to_favouriteFragment"
+            app:destination="@id/favouriteFragment" />
+        <action
+            android:id="@+id/action_listWallpaperFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
     </fragment>
     <fragment
         android:id="@+id/favouriteFragment"
         android:name="tahadeta.example.ftcover.ui.favourite.FavouriteFragment"
         android:label="fragment_favourite"
         tools:layout="@layout/fragment_favourite" />
+    <fragment
+        android:id="@+id/detailWallpaperFragment"
+        android:name="tahadeta.example.ftcover.ui.wallpaper.detailWallpaper.DetailWallpaperFragment"
+        android:label="fragment_detail_wallpaper"
+        tools:layout="@layout/fragment_detail_wallpaper" >
+        <argument
+            android:name="idWallpaper"
+            app:argType="string" />
+    </fragment>
 </navigation>

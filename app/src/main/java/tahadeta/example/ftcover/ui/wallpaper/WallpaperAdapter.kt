@@ -6,12 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import tahadeta.example.ftcover.R
-import tahadeta.example.ftcover.data.Categorie
 import tahadeta.example.ftcover.data.Wallpaper
 import tahadeta.example.ftcover.util.WallpaperHelper
+
 
 class WallpaperAdapter(private val context: Context?,
                        private val list: List<Wallpaper>
@@ -21,12 +22,18 @@ class WallpaperAdapter(private val context: Context?,
      */
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        private val imageWallpaper: ImageView = itemView.findViewById(R.id.imageWallpaper)
         private val imageAddFavourite: ImageView = itemView.findViewById(R.id.addFavouriteImage)
+        private val imageWallpaper: ImageView = itemView.findViewById(R.id.imageWallpaper)
 
         fun bindView(item: Wallpaper, position: Int, context: Context?) {
             WallpaperHelper.setImage(imageWallpaper,item.pathPoster.toString())
             Log.d("FERETJJD","enter ==== ")
+
+            val drawable1 = ContextCompat.getDrawable(
+                context!!.applicationContext,
+                R.drawable.star
+            )
+
         }
     }
 
@@ -34,14 +41,26 @@ class WallpaperAdapter(private val context: Context?,
         val item = list[position]
         holder.bindView(item, position, context)
 
+        val img = holder.itemView.findViewById<ImageView>(R.id.addFavouriteImage)
 
-        /*
-        holder.itemView.setOnClickListener {
-                val action = HomeFragmentDirections.actionHomeFragmentToListWallpaperFragment(item.title.toString())
+        img.setOnClickListener {
+            // Compare Favourite Image using Tag
+            if(img.tag.equals("notFavourite")){
+                img.setImageResource(R.drawable.star_fill)
+                img.tag = "isFavourite"
+            }else{
+                img.setImageResource(R.drawable.star)
+                img.tag = "notFavourite"
+            }
+        }
+
+
+        // Parse path of the poster to be displayed
+        holder.itemView.findViewById<ImageView>(R.id.imageWallpaper).setOnClickListener {
+            val action = ListWallpaperFragmentDirections.actionListWallpaperFragmentToDetailWallpaperFragment(item.pathPoster.toString())
             holder.itemView.findNavController().navigate(action)
         }
 
-         */
 
     }
 

@@ -3,11 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/bottom_one_angle_black.xml" value="0.2065" />
+        <entry key="app/src/main/res/drawable/bottom_one_angle_yellow.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/bottom_rounded_bg.xml" value="0.1895" />
         <entry key="app/src/main/res/drawable/bottom_rounded_yellow_bg.xml" value="0.1895" />
+        <entry key="app/src/main/res/drawable/custom_cercle_download.xml" value="0.1965" />
         <entry key="app/src/main/res/drawable/custom_cercle_home.xml" value="0.1895" />
+        <entry key="app/src/main/res/drawable/top_rounded_bg.xml" value="0.2065" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.165" />
         <entry key="app/src/main/res/layout/categorie_item.xml" value="0.190625" />
+        <entry key="app/src/main/res/layout/fragment_detail_wallpaper.xml" value="0.26084747314453127" />
         <entry key="app/src/main/res/layout/fragment_favourite.xml" value="0.2441123188405797" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.125" />
         <entry key="app/src/main/res/layout/fragment_list_wallpaper.xml" value="0.23530120849609376" />
@@ -21,5 +26,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.23176940917968752" />
+      </ProjectState>
+    </option>
   </component>
 </project>

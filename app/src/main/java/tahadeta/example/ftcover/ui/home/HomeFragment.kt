@@ -10,6 +10,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.airbnb.lottie.LottieAnimationView
 import com.google.firebase.firestore.*
 import tahadeta.example.ftcover.R
 import tahadeta.example.ftcover.data.Categorie
@@ -23,6 +24,7 @@ class HomeFragment : Fragment() {
     private lateinit var homeBack : View
     private lateinit var favouriteBack : View
     private lateinit var settingBack : View
+    lateinit var animationView: LottieAnimationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +42,7 @@ class HomeFragment : Fragment() {
         homeBack = root.findViewById(R.id.homeBack)
         favouriteBack = root.findViewById(R.id.favouriteBack)
         settingBack = root.findViewById(R.id.settingBack)
+        animationView = root.findViewById(R.id.animationLoading)
 
         initComponent()
 
@@ -71,12 +74,17 @@ class HomeFragment : Fragment() {
                         Log.d("FirestoreData", "Suss = " + result.toString())
                     }
 
+                    // hide animation
+                    animationView.visibility = View.GONE
+
                     categorieAdapter = CategorieAdapter(this.context, listCategories)
                     listCategories.sortBy { it.weight }
                     recyclerView.apply {
                         layoutManager = GridLayoutManager(this.context, 1)
                         adapter = categorieAdapter
                     }
+
+                    recyclerView.scheduleLayoutAnimation()
 
                 }
             }.addOnFailureListener {
